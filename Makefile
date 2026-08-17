@@ -1,33 +1,33 @@
-# The binary this exercise builds
-NAME := hello
+NAME := game
 
-# Compiler and the gauntlet's mandatory flags
-CXX      := c++
+CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++17
 
-# List every .cpp file in the exercise here
-SRCS := main.cpp
-OBJS := $(SRCS:.cpp=.o)
+LDLIBS := lib/libraylib.a -lX11 -lm
 
-# `make` / `make all`: build the binary
+SRC_DIR := src
+SRC_FILE := main.cpp \
+			engine.cpp
+SRC := $(addprefix $(SRC_DIR)/,$(SRC_FILE))
+
+OBJ_DIR := obj
+OBJS := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(OBJS) $(LDLIBS) -o $(NAME)
 
-# Compile each .cpp into a .o
-%.o: %.cpp
+$(OBJ_DIR)/%.o: %.cpp
+	mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# `make clean`: remove object files
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 
-# `make fclean`: remove objects AND the binary
 fclean: clean
 	rm -f $(NAME)
 
-# `make re`: rebuild everything from scratch
 re: fclean all
 
 .PHONY: all clean fclean re
