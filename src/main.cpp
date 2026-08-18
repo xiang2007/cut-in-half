@@ -13,7 +13,7 @@ int main() {
 	// w.fullScreen();
 	while(!WindowShouldClose()) {
 		BeginDrawing();
-		w.putText((std::to_string(Window::randNum())).sc)
+		DrawRectangle(10, 200, 20, 10, WHITE);
 		EndDrawing();
 	}
 }
