@@ -8,7 +8,7 @@ int main() {
 	int fps = 0;
 
 	w.startWin();
-	// w.fullScreen();
+	w.fullScreen();
 	while(!WindowShouldClose()) {
 		fps++;
 		switch (currentScreen) {
@@ -19,12 +19,12 @@ int main() {
 			} break;
 			case TITLE:
 			{
-				if (IsKeyPressed(KEY_SPACE) || IsGestureDetected(GESTURE_TAP))
+				if (IsKeyPressed(KEY_SPACE))
 					currentScreen = GAMEPLAY;
 			} break;
 			case GAMEPLAY:
 			{
-				if (IsKeyPressed(KEY_SPACE) || IsGestureDetected(GESTURE_TAP))
+				if (IsKeyPressed(KEY_SPACE))
 					currentScreen = ENDING;
 			} break;
 			case ENDING:
@@ -44,11 +44,11 @@ int main() {
 			} break;
 			case TITLE:
 			{
-				DrawText("TITLE", 50, 100, 50, GRAY);
+				drawTitle();
 			} break;
 			case GAMEPLAY:
 			{
-				DrawText("GAMEPLAY", 50, 100, 50, GRAY);
+				drawGameplay();
 			} break;
 			case ENDING:
 			{

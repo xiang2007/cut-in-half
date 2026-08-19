@@ -10,11 +10,11 @@
 #include "screen.hpp"
 
 #ifndef WIN_WIDTH
-# define WIN_WIDTH 800
+# define WIN_WIDTH 1920
 #endif
 
 #ifndef WIN_HEIGHT
-# define WIN_HEIGHT 400
+# define WIN_HEIGHT 1080
 #endif
 
 #ifndef WIN_TITLE
