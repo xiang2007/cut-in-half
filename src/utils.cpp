@@ -1,5 +1,9 @@
-#include "../include/Utils.hpp"
+#include "../include/utils.hpp"
+#include "../include/raylib.h"
 
-std::string getFullImgPath(const std::string &img_name) {
-    return (IMG_PATH + img_name);
+#include <iostream>
+
+const char* getFullImgPath(const std::string &img_name) {
+    std::cout << ("img/" + img_name).c_str() << std::endl;
+    return (("img/" + img_name).c_str());
 }

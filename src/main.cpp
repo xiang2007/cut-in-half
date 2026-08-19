@@ -1,34 +1,62 @@
-#include <iostream>
-#include "../include/raylib.h"
-#include "../include/engine.hpp"
+#include "../include/game.hpp"
 
-#define WIN_WIDTH 800
-#define WIN_HEIGHT 400
-#define WIN_TITLE "Game"
-#define IMG_PATH "./img"
+typedef enum GameScreen {LOGO = 0, TITLE, GAMEPLAY, SETTING, ENDING} GameScreen;
+GameScreen currentScreen = LOGO;
 
 int main() {
 	Window w(WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
-	int pos_x = 10, pos_y = 20;
+	int fps = 0;
 
 	w.startWin();
 	// w.fullScreen();
 	while(!WindowShouldClose()) {
+		fps++;
+		switch (currentScreen) {
+			case LOGO:
+			{
+				if (fps > 120)
+					currentScreen = TITLE;
+			} break;
+			case TITLE:
+			{
+				if (IsKeyPressed(KEY_SPACE) || IsGestureDetected(GESTURE_TAP))
+					currentScreen = GAMEPLAY;
+			} break;
+			case GAMEPLAY:
+			{
+				if (IsKeyPressed(KEY_SPACE) || IsGestureDetected(GESTURE_TAP))
+					currentScreen = ENDING;
+			} break;
+			case ENDING:
+			{
+				if (IsKeyPressed(KEY_SPACE) || IsGestureDetected(GESTURE_TAP))
+					currentScreen = TITLE;
+			} break;
+			default: break;
+		}
 		BeginDrawing();
-		// while (GetKeyPressed()) {
-		// 	if (IsKeyPressed(KEY_LEFT))
-		// 		pos_x -= 1;
-		// 	else if (IsKeyPressed(KEY_RIGHT))
-		// 		pos_x += 1;
-		// 	else if (IsKeyPressed(KEY_UP))
-		// 		pos_y -= 1;
-		// 	else if (IsKeyPressed(KEY_DOWN))
-		// 		pos_y += 1;
-			
-		// }
-		LoadImage(getFull);
-		DrawRectangle(pos_x, pos_y, 20, 10, RED);
 		ClearBackground(WHITE);
+		switch (currentScreen)
+		{
+			case LOGO:
+			{
+				drawLogo();
+			} break;
+			case TITLE:
+			{
+				DrawText("TITLE", 50, 100, 50, GRAY);
+			} break;
+			case GAMEPLAY:
+			{
+				DrawText("GAMEPLAY", 50, 100, 50, GRAY);
+			} break;
+			case ENDING:
+			{
+				DrawText("ENDING", 50, 100, 50, GRAY);
+			}
+			default:
+				break;
+		}
 		EndDrawing();
 	}
 }
