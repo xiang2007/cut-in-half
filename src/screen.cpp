@@ -5,8 +5,7 @@ score sb;
 
 void drawMiddle(const char* text, int fontSize, Color color)
 {
-	int textLen =
- MeasureText(text, fontSize);
+	int textLen = MeasureText(text, fontSize);
 	DrawText(text, (GetScreenWidth() - textLen) / 2, (GetScreenHeight() - fontSize) /  2, fontSize, color);
 }
 

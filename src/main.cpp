@@ -15,7 +15,7 @@ int main() {
 		switch (currentScreen) {
 			case LOGO:
 			{
-				if (fps > 1)
+				if (fps > 120)
 					currentScreen = TITLE;
 			} break;
 			case TITLE:
