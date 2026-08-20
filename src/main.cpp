@@ -6,6 +6,7 @@ GameScreen currentScreen = LOGO;
 int main() {
 	Window w(WIN_WIDTH, WIN_HEIGHT, WIN_TITLE);
 	int fps = 0;
+	int i = 0;
 
 	w.startWin();
 	w.fullScreen();
@@ -24,8 +25,12 @@ int main() {
 			} break;
 			case GAMEPLAY:
 			{
-				if (IsKeyPressed(KEY_SPACE))
+				if (IsGestureDetected(GESTURE_TAP))
+					i++;
+				if (i > 10) {
+					i = 0;
 					currentScreen = ENDING;
+				}
 			} break;
 			case ENDING:
 			{

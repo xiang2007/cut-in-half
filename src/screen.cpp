@@ -43,6 +43,7 @@ void drawStickV(Vector2 vec, Vector2 size, Color color)
 void drawGameplay(void)
 {
 	Object	b1(0, 0);
+	// int i = 0;
 	BeginDrawing();
 	b1.setImage("img/nasi_lemak.png");
 	int s_width = GetScreenWidth(), s_height = GetScreenHeight();
