@@ -10,7 +10,8 @@ SRC_FILE := main.cpp \
 			engine.cpp \
 			utils.cpp \
 			screen.cpp \
-			objects.cpp
+			objects.cpp \
+			score.cpp
 SRC := $(addprefix $(SRC_DIR)/,$(SRC_FILE))
 
 OBJ_DIR := obj

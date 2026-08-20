@@ -14,7 +14,7 @@ int main() {
 		switch (currentScreen) {
 			case LOGO:
 			{
-				if (fps > 120)
+				if (fps > 1)
 					currentScreen = TITLE;
 			} break;
 			case TITLE:
@@ -34,7 +34,6 @@ int main() {
 			} break;
 			default: break;
 		}
-		BeginDrawing();
 		ClearBackground(WHITE);
 		switch (currentScreen)
 		{
@@ -52,11 +51,12 @@ int main() {
 			} break;
 			case ENDING:
 			{
-				DrawText("ENDING", 50, 100, 50, GRAY);
+				BeginDrawing();
+				drawMiddle("END!!", 50, GREEN);
+				EndDrawing();
 			}
 			default:
 				break;
 		}
-		EndDrawing();
 	}
 }
